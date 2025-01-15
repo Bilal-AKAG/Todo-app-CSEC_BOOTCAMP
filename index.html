@@ -1,11 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo app</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <header>
+          <h1>TODO LIST</h1>
+          <div class="section">
+            <form action="" class="search">
+              <input type="search" placeholder="Search note..." />
+              <button class="src-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  color=""
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  />
+                </svg>
+              </button>
+            </form>
+
+            <div class="custom-select">
+              <button class="select-button">
+                <span class="btn-s">All</span
+                ><img class="img-arrow" src="images/arrowdown.svg" alt="" />
+              </button>
+              <ul class="options">
+                <li class="option">All</li>
+                <li class="option">Complete</li>
+                <li class="option">Incomplete</li>
+              </ul>
+            </div>
+
+            <button class="theme">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                />
+              </svg>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="note-content">
+          <div class="image-container">
+            <figure>
+              <img src="images/empty.svg" alt="no notes " />
+              <figcaption>Empty...</figcaption>
+            </figure>
+          </div>
+          <ul class="task-list"></ul>
+
+          <div class="plus-wrapper">
+            <button class="plus-btn">
+              <img src="images/plus.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pop-wrapper">
+      <div class="pop-element">
+        <h1>New Notes</h1>
+        <input class="src-input" type="text" placeholder="input your note..." />
+        <div class="btn-cont">
+          <button class="btn-white">CANCEL</button>
+          <button class="apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
 </html>
