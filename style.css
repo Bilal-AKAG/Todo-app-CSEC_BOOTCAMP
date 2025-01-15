@@ -430,3 +430,44 @@ figcaption {
   text-decoration: line-through;
   color: rgb(142, 142, 142);
 }
+/* phone and tablet view  */
+
+
+
+@media screen and (max-width: 600px) {
+  .search {
+    width: 300px;
+  }
+}
+
+
+
+@media (max-width:820px){
+.task-list{
+  margin-top: 50px;
+}
+}
+
+@media (max-width:520px){
+  .note-content{
+    margin-left:0;
+    padding-left:16px;
+    justify-content: flex-start;
+  }
+.task-list {
+  margin-left:0px;
+  padding:0px;
+  
+}
+.plus-wrapper{
+  bottom:8px;
+}
+}
+@media (max-width:457px){
+  .search{
+    width:100%;
+  }
+  .note-content{
+    margin-top:50px;
+  }
+}
