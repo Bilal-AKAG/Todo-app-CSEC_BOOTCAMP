@@ -156,7 +156,7 @@ input[type="search"]::-webkit-search-results-decoration {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   list-style: none;
-  height: 84px;
+  height: auto;
 
   padding: 0;
   z-index: 1000;
@@ -430,9 +430,6 @@ figcaption {
   text-decoration: line-through;
   color: rgb(142, 142, 142);
 }
-/* phone and tablet view  */
-
-
 
 @media screen and (max-width: 600px) {
   .search {

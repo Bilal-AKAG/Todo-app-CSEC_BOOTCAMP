@@ -8,34 +8,37 @@ const plus_btn = document.querySelector(".plus-btn");
 const popel = document.querySelector(".pop-element");
 const pop_wrapper = document.querySelector(".pop-wrapper");
 const cancel = document.querySelector(".btn-white");
-const searchInput = document.querySelector('input[type="search"]'); 
-const toggle = ["images/arrowdown.svg", "images/arrowup.svg"];
-let length = toggle.length;
-let pointer = 1;
+const searchInput = document.querySelector('input[type="search"]');
+const arrowDown = document.querySelector(".arrow-down");
 
+const arrowToggle = () => {
+
+  arrowDown.style.rotate==="180deg" ? arrowDown.style.rotate = "0deg" : arrowDown.style.rotate = "180deg";
+};
 selectButton.addEventListener("click", () => {
   ul.classList.toggle("open");
-  if (pointer > length - 1 || pointer < 0) {
-    pointer = 0;
-  }
-  image_arrow.src = toggle[pointer];
-  pointer += 1;
+  arrowToggle();
 });
 
 options.forEach((option) => {
   option.addEventListener("click", (event) => {
     Span.textContent = event.target.textContent;
+    arrowToggle();
     ul.classList.remove("open");
-    image_arrow.src = "images/arrowdown.svg";
-    pointer -= 1;
     updateTodo();
   });
 });
 
 document.addEventListener("click", (event) => {
+  
+
   if (!customSelect.contains(event.target)) {
+    if (ul.classList.contains("open")) {
+      arrowToggle();
+    }
     ul.classList.remove("open");
   }
+  
 });
 
 // darkmode feature
@@ -62,49 +65,65 @@ plus_btn.addEventListener("click", (event) => {
 });
 cancel.addEventListener("click", (e) => {
   pop_wrapper.classList.remove("wrap");
+  input.value = "";
+  editingIndex = -1;
 });
 pop_wrapper.addEventListener("click", (e) => {
   if (e.target == pop_wrapper) {
     pop_wrapper.classList.remove("wrap");
+    input.value = "";
+    editingIndex = -1;
   }
 });
 
 // task logic
 const apply = document.querySelector(".apply");
 const input = document.querySelector(".src-input");
-let tasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 const image = document.querySelector(".image-container");
+
+let editingIndex = -1; // Track the index of the task being edited
 
 const todoAdd = () => {
   let todoText = input.value.trim();
+
   if (todoText) {
-    tasks.push({ text: todoText, completed: false });
+    if (editingIndex !== -1) {
+      // Editing existing task
+      tasks[editingIndex].text = todoText;
+      editingIndex = -1; // Reset editing index
+    } else {
+      // Adding new task
+      tasks.push({ text: todoText, completed: false });
+    }
     input.value = "";
     updateTodo();
   }
-  todoText = "";
 };
+
 const toggleTaskComplete = (index) => {
   tasks[index].completed = !tasks[index].completed;
   updateTodo();
 };
+
 const deleteTask = (index) => {
   tasks.splice(index, 1);
   updateTodo();
 };
+
 const editTask = (index) => {
   const editable = document.querySelector(".src-input");
   editable.value = tasks[index].text;
   pop_wrapper.classList.add("wrap");
-  tasks.splice(index, 1);
-  updateTodo();
+  editingIndex = index; // Store the index of the task being edited
 };
+
 let updateTodo = () => {
   const todoList = document.querySelector(".task-list");
   todoList.innerHTML = "";
   const spantext = Span.textContent.toLowerCase();
   let filtered_task = [];
-  let tasksToRender = tasks; // Initially, render all tasks
+  let tasksToRender = tasks;
 
   switch (spantext) {
     case "complete":
@@ -179,6 +198,7 @@ apply.addEventListener("click", (e) => {
   pop_wrapper.classList.remove("wrap");
   todoAdd();
 });
+
 searchInput.addEventListener("input", () => {
   updateTodo();
 });
